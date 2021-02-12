@@ -1,0 +1,15 @@
+[package]
+name = "sorting"
+description = "Various sorting algorithm implemented in Rust"
+version = "0.1.0"
+authors = ["Daniel Kurashige-Gollub <daniel@kurashige-gollub.de>"]
+edition = "2018"
+license = "MIT"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+# TODO(dkg): enable again if needed
+doctest = false
+
+[dependencies]
