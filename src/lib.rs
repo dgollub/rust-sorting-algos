@@ -1,6 +1,8 @@
 #[allow(dead_code)]
-fn bubble_sort<T>(list: &mut [T]) where 
-    T: PartialOrd {
+fn bubble_sort<T>(list: &mut [T])
+where
+    T: PartialOrd,
+{
     let mut n = list.len();
     if n < 1 {
         return;
@@ -9,14 +11,15 @@ fn bubble_sort<T>(list: &mut [T]) where
     loop {
         let mut swapped = false;
 
-        for i in 1..n { // n not included in range
-            if list[i-1] > list[i] {
-                list.swap(i-1, i);
+        for i in 1..n {
+            // n not included in range
+            if list[i - 1] > list[i] {
+                list.swap(i - 1, i);
                 swapped = true;
             }
         }
 
-        n = n - 1;
+        n -= 1;
 
         if !swapped {
             break;
@@ -37,7 +40,7 @@ mod tests {
 
         assert_eq!(input, vec![1i32, 2, 3, 4, 7, 9, 10, 11, 24, 25]);
     }
-    
+
     #[test]
     fn test_bubble_sort_0_elements() {
         let mut input = vec![];
@@ -46,7 +49,7 @@ mod tests {
 
         assert_eq!(input, vec![]);
     }
-    
+
     #[test]
     fn test_bubble_sort_1_element() {
         let mut input = vec![4i32];
@@ -55,7 +58,7 @@ mod tests {
 
         assert_eq!(input, vec![4i32]);
     }
-    
+
     #[test]
     fn test_bubble_sort_2_elements() {
         let mut input = vec![4i32, 10];
