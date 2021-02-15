@@ -3,61 +3,61 @@ pub fn quick_sort<T>(list: &mut [T])
 where
     T: PartialOrd,
 {
-  if list.len() < 2 {
-    return;
-  }
+    if list.len() < 2 {
+        return;
+    }
 
-  quicksort(list, 0, list.len() as i32 - 1)
+    quicksort(list, 0, list.len() as i32 - 1)
 }
 
 fn quicksort<T>(list: &mut [T], start: i32, end: i32)
 where
     T: PartialOrd,
 {
-  match list.len() {
-    1 => return,
-    2 => {
-      if list[0] > list[1] {
-        list.swap(0, 1);
-      }
-      return;
+    match list.len() {
+        1 => return,
+        2 => {
+            if list[0] > list[1] {
+                list.swap(0, 1);
+            }
+            return;
+        }
+        _ => (),
     }
-    _ => ()
-  }
 
-  if end < start {
-    return;
-  }
-  
-  let pivot_index = partition(list, start, end);
+    if end < start {
+        return;
+    }
 
-  quicksort(list, start, pivot_index - 1);
-  quicksort(list, pivot_index + 1, end);
+    let pivot_index = partition(list, start, end);
+
+    quicksort(list, start, pivot_index - 1);
+    quicksort(list, pivot_index + 1, end);
 }
 
 // TODO(dkg): fix this messy usize vs i32 business
-fn partition<T>(list: &mut [T], start: i32, end: i32) -> i32 
+fn partition<T>(list: &mut [T], start: i32, end: i32) -> i32
 where
     T: PartialOrd,
 {
-  if list.len() == 2 {
-    if list[0] > list[1] {
-      list.swap(0, 1);
+    if list.len() == 2 {
+        if list[0] > list[1] {
+            list.swap(0, 1);
+        }
+        return 0;
     }
-    return 0
-  }
 
-  let mut left = start;
+    let mut left = start;
 
-  for j in start..end {
-    if list[j as usize] < list[end as usize] {
-      list.swap(left as usize, j as usize);
-      left += 1;
+    for j in start..end {
+        if list[j as usize] < list[end as usize] {
+            list.swap(left as usize, j as usize);
+            left += 1;
+        }
     }
-  }
-  eprintln!("left {}", left);
-  list.swap(left as usize, end as usize);
-  left
+    eprintln!("left {}", left);
+    list.swap(left as usize, end as usize);
+    left
 }
 
 #[cfg(test)]

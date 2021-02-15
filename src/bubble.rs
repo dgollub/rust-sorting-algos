@@ -1,5 +1,5 @@
 #[allow(dead_code)]
-fn bubble_sort<T>(list: &mut [T])
+pub fn bubble_sort<T>(list: &mut [T])
 where
     T: PartialOrd,
 {
